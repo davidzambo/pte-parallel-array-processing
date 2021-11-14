@@ -41,7 +41,7 @@ set_property(TEST "Test 3: Pass just -f parameter"
         PROPERTY PASS_REGULAR_EXPRESSION "${USAGE_REGEX}")
 
 add_test(NAME "Test 4: Pass all required parameters"
-        COMMAND "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" -r 3 -c 4 -f ../test/array_example_0.txt)
+        COMMAND "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" -n 4 -f ../test/array_example_0.txt)
 set_tests_properties(
         "Test 4: Pass all required parameters"
         PROPERTIES
@@ -50,7 +50,7 @@ set_tests_properties(
         )
 
 add_test(NAME "Test 5: Will handle random tabs and spaces between numbers in file"
-        COMMAND "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" -r 3 -c 4 -f ../test/array_example_1.txt)
+        COMMAND "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" -n 4 -f ../test/array_example_1.txt)
 set_tests_properties(
         "Test 5: Will handle random tabs and spaces between numbers in file"
         PROPERTIES
@@ -59,7 +59,7 @@ set_tests_properties(
 )
 
 add_test(NAME "Test 6: Will fail as the second row contains an extra column"
-        COMMAND "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" -r 3 -c 4 -f ../test/array_example_2.txt)
+        COMMAND "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" -n 4 -f ../test/array_example_2.txt)
 set_property(TEST "Test 6: Will fail as the second row contains an extra column"
         PROPERTY WILL_FAIL true)
 set_tests_properties(
@@ -70,7 +70,7 @@ set_tests_properties(
 )
 
 add_test(NAME "Test 7: Will fail as the second row contains less columns"
-        COMMAND "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" -r 3 -c 4 -f ../test/array_example_3.txt)
+        COMMAND "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" -n 4 -f ../test/array_example_3.txt)
 set_property(TEST "Test 7: Will fail as the second row contains less columns"
         PROPERTY WILL_FAIL true)
 set_tests_properties(
@@ -81,7 +81,7 @@ set_tests_properties(
 )
 
 add_test(NAME "Test 8: Will fail as the file contains an extra row"
-        COMMAND "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" -r 3 -c 4 -f ../test/array_example_4.txt)
+        COMMAND "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" -n 4 -f ../test/array_example_4.txt)
 set_property(TEST "Test 8: Will fail as the file contains an extra row"
         PROPERTY WILL_FAIL true)
 set_tests_properties(

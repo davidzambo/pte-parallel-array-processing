@@ -1,6 +1,5 @@
 
 typedef struct Params {
-    int rows;
-    int cols;
+    int size;
     char *filename;
 } PARAMS;

@@ -7,21 +7,17 @@
 
 struct Params get_params(char *argv[]) {
     struct Params params;
-    params.rows = 0;
-    params.cols = 0;
+    params.size = 0;
     params.filename = "";
 
-    for (int i = 1; i < 7; i++) {
+    for (int i = 1; i < 5; i++) {
         if (argv[i][0] != '-') {
             continue;
         }
 
         switch (argv[i][1]) {
-            case 'r':
-                params.rows = atoi(argv[i + 1]);
-                break;
-            case 'c':
-                params.cols = atoi(argv[i + 1]);
+            case 'n':
+                params.size = atoi(argv[i + 1]);
                 break;
             case 'f':
                 params.filename = argv[i + 1];
@@ -37,13 +33,8 @@ struct Params get_params(char *argv[]) {
 void validate_params(struct Params params, FILE *file) {
     bool has_error = false;
 
-    if (params.cols > MAX_COL_NUMBER || params.cols < 1) {
-        printf("Invalid col value!\n");
-        has_error = true;
-    }
-
-    if (params.rows > MAX_ROW_NUMBER || params.rows < 1) {
-        printf("Invalid row value!\n");
+    if (params.size > MAX_VECTOR_SIZE || params.size < 1) {
+        printf("Invalid vector size! Vector should be max %d x %d!\n", MAX_VECTOR_SIZE, MAX_VECTOR_SIZE);
         has_error = true;
     }
 

@@ -27,7 +27,7 @@ void get_array_from_file(float **arr, struct Params params, FILE *file) {
             number_as_word_iterator = 0;
 
 
-        if (row > params.rows - 1) {
+        if (row > params.size - 1) {
             has_extra_row_in_file = true;
             break;
         }
@@ -56,9 +56,9 @@ void get_array_from_file(float **arr, struct Params params, FILE *file) {
 
         } while (next_char_in_line != '\n' && next_char_in_line != '\0');
 
-        if (col != params.cols) {
+        if (col != params.size) {
             printf("Error during processing the given file: \n");
-            printf("%d. row has %s columns than expected based on the given input parameters", row + 1, (col > params.cols - 1) ? "more" : "less");
+            printf("%d. row has %s columns than expected based on the given input parameters", row + 1, (col > params.size - 1) ? "more" : "less");
             exit(-1);
         }
 
@@ -66,7 +66,7 @@ void get_array_from_file(float **arr, struct Params params, FILE *file) {
         col = 0;
     }
 
-    if (row < params.rows || has_extra_row_in_file) {
+    if (row < params.size || has_extra_row_in_file) {
         printf("Error during processing the given file: \n");
         printf("The file contains %s rows than expected based on the given input parameters", (has_extra_row_in_file) ? "more" : "less");
         exit(-1);

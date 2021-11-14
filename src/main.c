@@ -12,14 +12,14 @@ int main(int argc, char *argv[]) {
     FILE *file = fopen(params.filename, "r");
 
     validate_params(params, file);
-    printf("\nWe will initialize a %d x %d matrix from the file '%s'\n", params.rows, params.cols, params.filename);
+    printf("\nWe will initialize a %d x %d matrix from the file '%s'\n", params.size, params.size, params.filename);
 
     float **array = init_array(params);
 
     get_array_from_file(array, params, file);
 
-    for (int i = 0; i < params.rows; i++) {
-        for (int j = 0; j < params.cols; j++) {
+    for (int i = 0; i < params.size; i++) {
+        for (int j = 0; j < params.size; j++) {
             printf("%f ", array[i][j]);
         }
         printf("\n");
