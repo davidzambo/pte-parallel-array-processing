@@ -48,7 +48,7 @@ void validate_params(struct Params params, FILE *file) {
     }
 
     if (file == NULL) {
-        printf("File does not exist or does not readable!\n");
+        printf("File doesn't exist or doesn't readable!\n");
         has_error = true;
     }
 

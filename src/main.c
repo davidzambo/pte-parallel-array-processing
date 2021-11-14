@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 
     float **array = init_array(params);
 
-    get_array_from_file(array, file);
+    get_array_from_file(array, params, file);
 
     for (int i = 0; i < params.rows; i++) {
         for (int j = 0; j < params.cols; j++) {
