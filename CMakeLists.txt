@@ -90,12 +90,3 @@ set_tests_properties(
         FAIL_REGULAR_EXPRESSION
         "${FILE_CONTENT_ERROR_REGEX}"
 )
-
-#set (passRegex "^Will init")
-#set_property(TEST "Show usage"
-#        PROPERTY FAIL_REGULAR_EXPRESSION "${failRegex}")
-#set_property(TEST "Show usage"
-#        PASS_REGULAR_EXPRESSION "${failRegex}")
-
-
-#add_test("Have all" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" "-r 3 -c 4 -f any.txt")
