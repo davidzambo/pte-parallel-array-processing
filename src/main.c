@@ -1,3 +1,4 @@
+#include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -12,6 +13,8 @@
 int main(int argc, char *argv[]) {
     clock_t start_time = clock();
     ensure_usage(argc);
+    int nProcessors=omp_get_max_threads();
+    printf("\n%d processors\n", nProcessors);
 
     struct Params params = get_params(argv);
     FILE *file = fopen(params.filename, "r");
