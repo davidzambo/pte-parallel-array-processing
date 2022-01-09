@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "structs/params.h"
 #include "usage.h"
 #include "param_handling.h"
@@ -9,6 +10,7 @@
 #include "write_result.h"
 
 int main(int argc, char *argv[]) {
+    clock_t start_time = clock();
     ensure_usage(argc);
 
     struct Params params = get_params(argv);
@@ -26,5 +28,6 @@ int main(int argc, char *argv[]) {
 
     write_out_indices(averages, array, params.size, params.precision);
 
+    printf("Running time: %.4fs\n", (double)(clock() - start_time)/CLOCKS_PER_SEC);
     return 0;
 }

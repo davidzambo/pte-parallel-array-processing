@@ -55,3 +55,4 @@ cmake-build-debug/
 build
 Testing
 output.txt
+test/array_example_10000.txt
