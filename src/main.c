@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 
     get_averages_in_columns(averages, array, params.size);
 
-    write_out_indices(averages, array, params.size);
+    write_out_indices(averages, array, params.size, params.precision);
 
     return 0;
 }

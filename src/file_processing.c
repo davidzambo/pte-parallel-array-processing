@@ -14,14 +14,13 @@ bool is_whitespace(char next_char_in_line) {
 
 void get_array_from_file(float **arr, struct Params params, FILE *file) {
     int row = 0, col = 0;
-    char *line = NULL;
-    size_t len = 0;
+    char *line = malloc(params.size * 8 * sizeof(char));
 
     char next_number_in_line[20];
     char next_char_in_line;
     bool has_extra_row_in_file = false;
 
-    while (getline(&line, &len, file) != -1) {
+    while (fscanf(file, "%[^\n]\n", line) == 1) {
         float number;
         int line_iterator = 0,
             number_as_word_iterator = 0;
@@ -72,5 +71,6 @@ void get_array_from_file(float **arr, struct Params params, FILE *file) {
         exit(-1);
     }
 
+    //free(line);
     fclose(file);
 }
