@@ -8,7 +8,7 @@
 struct Params get_params(char *argv[]) {
     struct Params params;
     params.size = 0;
-    params.precision = 3;
+    params.precision = 2;
     params.filename = "";
 
     for (int i = 1; i < 5; i++) {

@@ -1,15 +1,25 @@
+#include <omp.h>
+#include <stdio.h>
 #include "average_calculation.h"
 
 void get_averages_in_columns(float *sums, float **array, int size) {
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            if (i == 0) {
-                sums[j] = 0;
+
+    int i, j;
+    double sum;
+    {
+#pragma omp parallel for private(j, sum)
+        for (i = 0; i < size; i++) {
+            printf("Hello %d in the %d thread\n", i, omp_get_thread_num());
+
+//#pragma omp parallel for
+            sum = 0.0;
+            for (j = 0; j < size; j++) {
+                sum += array[j][i];
+//                printf("\n%d %d %f %f", i, j, sum, array[j][i]);
             }
-            sums[j] += array[i][j];
-            if (i == size - 1) {
-                sums[j] /= (float) size;
-            }
+            sums[i] = sum / size;
+//            printf("\naverage is %f\n", averages[i]);
+//            printf("\n%d %d %f %d", i, j, averages[j], sum);
         }
     }
 }

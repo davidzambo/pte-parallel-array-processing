@@ -1,4 +1,3 @@
-#include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -9,12 +8,11 @@
 #include "array_initialization.h"
 #include "average_calculation.h"
 #include "write_result.h"
+#include "omp.h"
 
 int main(int argc, char *argv[]) {
     clock_t start_time = clock();
     ensure_usage(argc);
-    int nProcessors=omp_get_max_threads();
-    printf("\n%d processors\n", nProcessors);
 
     struct Params params = get_params(argv);
     FILE *file = fopen(params.filename, "r");
@@ -24,11 +22,13 @@ int main(int argc, char *argv[]) {
     float **array = init_array(params);
 
     get_array_from_file(array, params, file);
+    printf("File processing: %.4fs\n", (double)(clock() - start_time)/CLOCKS_PER_SEC);
 
     float *averages = malloc(params.size * sizeof(float));
 
     get_averages_in_columns(averages, array, params.size);
 
+    printf("Average calculation: %.4fs\n", (double)(clock() - start_time)/CLOCKS_PER_SEC);
     write_out_indices(averages, array, params.size, params.precision);
 
     printf("Running time: %.4fs\n", (double)(clock() - start_time)/CLOCKS_PER_SEC);
