@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <omp.h>
 #include <string.h>
-#include "write_result.h"
+#include "get_averages_indicies.h"
 #include "float_handler.h"
 
 char ** get_average_indices(float *averages, float **array, int size, int precision) {

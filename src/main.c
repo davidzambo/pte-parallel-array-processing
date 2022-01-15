@@ -6,7 +6,7 @@
 #include "file_processing.h"
 #include "array_initialization.h"
 #include "average_calculation.h"
-#include "write_result.h"
+#include "get_averages_indicies.h"
 #include "omp.h"
 
 int main(int argc, char *argv[]) {
