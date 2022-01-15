@@ -25,7 +25,6 @@ void get_array_from_file(float **arr, struct Params params, FILE *file) {
         int line_iterator = 0,
             number_as_word_iterator = 0;
 
-
         if (row > params.size - 1) {
             has_extra_row_in_file = true;
             break;

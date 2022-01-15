@@ -34,7 +34,7 @@ struct Params get_params(char *argv[]) {
     return params;
 }
 
-void validate_params(struct Params params, FILE *file) {
+void validate_params(struct Params params, FILE *input, FILE *output) {
     bool has_error = false;
 
     if (params.size > MAX_VECTOR_SIZE || params.size < 1) {
@@ -42,9 +42,14 @@ void validate_params(struct Params params, FILE *file) {
         has_error = true;
     }
 
-    if (file == NULL) {
+    if (input == NULL) {
         printf("File doesn't exist or doesn't readable!\n");
         has_error = true;
+    }
+
+    if (output == NULL) {
+        printf("Output input can't be opened\n");
+        exit(-1);
     }
 
     if (has_error) {

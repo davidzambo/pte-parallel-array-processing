@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include "structs/params.h"
 #include "usage.h"
 #include "param_handling.h"
@@ -16,8 +15,9 @@ int main(int argc, char *argv[]) {
 
     struct Params params = get_params(argv);
     FILE *file = fopen(params.filename, "r");
+    FILE *output = fopen("results.txt", "w");
 
-    validate_params(params, file);
+    validate_params(params, file, output);
 
     float **array = init_array(params);
 
@@ -27,10 +27,16 @@ int main(int argc, char *argv[]) {
     float *averages = malloc(params.size * sizeof(float));
 
     get_averages_in_columns(averages, array, params.size);
-
     printf("Average calculation: %.4fs\n", omp_get_wtime() - start_time);
 
-    write_out_indices(averages, array, params.size, params.precision);
+    char **results = get_average_indices(averages, array, params.size, params.precision);
+    printf("Get matching indexes time: %.4fs\n", omp_get_wtime() - start_time);
+
+    for (int i = 0; i < params.size; i++) {
+        fprintf(output, "%s", results[i]);
+    }
+
+    fclose(output);
 
     printf("Running time: %.4fs\n", omp_get_wtime() - start_time);
     return 0;
