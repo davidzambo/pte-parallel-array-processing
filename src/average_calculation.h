@@ -1,6 +1,6 @@
 #ifndef PARALLEL_ARRAY_PROCESSING_AVERAGE_CALCULATION_H
 #define PARALLEL_ARRAY_PROCESSING_AVERAGE_CALCULATION_H
 
-void get_averages_in_columns(float *sums, float **array, int size);
+void get_averages_in_columns(float *averages, float **array, int size);
 
 #endif //PARALLEL_ARRAY_PROCESSING_AVERAGE_CALCULATION_H

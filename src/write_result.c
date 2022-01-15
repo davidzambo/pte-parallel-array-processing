@@ -11,12 +11,11 @@ void write_out_indices(float *averages, float **array, int size, int precision) 
         exit(-1);
     }
 
-    fprintf(output,"Indices with the equal value of the average in the column\n");
     for(int i = 0; i < size; i++) {
         fprintf(output, "Column %d | average = %f: ", i + 1, averages[i]);
         for (int j = 0; j < size; j++) {
             if (are_floats_equal(array[j][i], averages[i], precision)) {
-                fprintf(output,"%d, ", j);
+                fprintf(output,"%d ", j);
             }
         }
         fprintf(output, "\n");
