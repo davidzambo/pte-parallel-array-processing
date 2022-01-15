@@ -58,3 +58,4 @@ output.txt
 test/array_example_3000.txt
 test/array_example_5000.txt
 test/array_example_10000.txt
+results*.txt
