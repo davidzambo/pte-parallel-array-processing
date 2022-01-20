@@ -6,7 +6,7 @@
 #include "file_processing.h"
 #include "array_initialization.h"
 #include "average_calculation.h"
-#include "get_averages_indicies.h"
+#include "write_out_averages_indicies.h"
 #include "omp.h"
 
 int main(int argc, char *argv[]) {
@@ -25,15 +25,13 @@ int main(int argc, char *argv[]) {
     printf("File processing: %.4fs\n", omp_get_wtime() - start_time);
 
     float *averages = malloc(params.size * sizeof(float));
+    {
+#pragma omp parallel
+        get_averages_in_columns(averages, array, params.size);
+#pragma omp barrier
+        printf("Average calculation: %.4fs\n", omp_get_wtime() - start_time);
 
-    get_averages_in_columns(averages, array, params.size);
-    printf("Average calculation: %.4fs\n", omp_get_wtime() - start_time);
-
-    char **results = get_average_indices(averages, array, params.size, params.precision);
-    printf("Get matching indexes time: %.4fs\n", omp_get_wtime() - start_time);
-
-    for (int i = 0; i < params.size; i++) {
-        fprintf(output, "%s", results[i]);
+        write_out_average_indices(output, averages, array, params.size, params.precision);
     }
 
     fclose(output);

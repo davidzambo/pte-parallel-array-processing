@@ -3,7 +3,7 @@ project(parallel-array-processing VERSION 1.0)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -fopenmp")
 
-add_executable(parallel-array-processing src/main.c src/usage.c src/usage.h src/param_handling.c src/param_handling.h src/file_processing.c src/file_processing.h src/array_initialization.c src/array_initialization.h src/average_calculation.c src/average_calculation.h src/get_averages_indicies.c src/get_averages_indicies.h src/float_handler.c src/float_handler.h)
+add_executable(parallel-array-processing src/main.c src/usage.c src/usage.h src/param_handling.c src/param_handling.h src/file_processing.c src/file_processing.h src/array_initialization.c src/array_initialization.h src/average_calculation.c src/average_calculation.h src/write_out_averages_indicies.c src/write_out_averages_indicies.h src/float_handler.c src/float_handler.h)
 target_link_libraries(parallel-array-processing m)
 
 enable_testing()
