@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <omp.h>
 #include <string.h>
 #include "write_out_averages_indicies.h"
 #include "float_handler.h"
